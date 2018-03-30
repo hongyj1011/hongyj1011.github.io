@@ -8,19 +8,19 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>APP启动广告图思路 | Hyj的Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="APP启动广告图思路 很多app(如淘宝、美团等)在启动图加载完毕后，还会显示几秒的广告，一般都有个跳过按钮可以跳过这个广告，有的app在点击广告页之后还会进入一个广告页面，点击返回进入首页。  思路 1.广告页加载思路广告页的内容要实时显示，在无网络状态或者网速缓慢的情况下不能延迟加载，或者等到首页出现了再加载广告页。所以这里我不采用网络请求广告接口获取图片地址，然后加载图片的方式，而是先将图片">
-<meta name="keywords" content="程序员的自我修养,iOS">
+  <meta name="description" content="很多app(如淘宝、美团等)在启动图加载完毕后，还会显示几秒的广告，一般都有个跳过按钮可以跳过这个广告，有的app在点击广告页之后还会进入一个广告页面，点击返回进入首页。  思路 1.广告页加载思路广告页的内容要实时显示，在无网络状态或者网速缓慢的情况下不能延迟加载，或者等到首页出现了再加载广告页。所以这里我不采用网络请求广告接口获取图片地址，然后加载图片的方式，而是先将图片异步下载到本地，并保">
+<meta name="keywords" content="iOS,程序员的自我修养">
 <meta property="og:type" content="article">
 <meta property="og:title" content="APP启动广告图思路">
 <meta property="og:url" content="http://yoursite.com/2018/03/28/APP启动广告图思路/index.html">
 <meta property="og:site_name" content="Hyj的Blog">
-<meta property="og:description" content="APP启动广告图思路 很多app(如淘宝、美团等)在启动图加载完毕后，还会显示几秒的广告，一般都有个跳过按钮可以跳过这个广告，有的app在点击广告页之后还会进入一个广告页面，点击返回进入首页。  思路 1.广告页加载思路广告页的内容要实时显示，在无网络状态或者网速缓慢的情况下不能延迟加载，或者等到首页出现了再加载广告页。所以这里我不采用网络请求广告接口获取图片地址，然后加载图片的方式，而是先将图片">
-<meta property="og:image" content="http://p6c2e2bne.bkt.clouddn.com/AppStart.png">
-<meta property="og:updated_time" content="2018-03-30T02:14:06.160Z">
+<meta property="og:description" content="很多app(如淘宝、美团等)在启动图加载完毕后，还会显示几秒的广告，一般都有个跳过按钮可以跳过这个广告，有的app在点击广告页之后还会进入一个广告页面，点击返回进入首页。  思路 1.广告页加载思路广告页的内容要实时显示，在无网络状态或者网速缓慢的情况下不能延迟加载，或者等到首页出现了再加载广告页。所以这里我不采用网络请求广告接口获取图片地址，然后加载图片的方式，而是先将图片异步下载到本地，并保">
+<meta property="og:image" content="http://p6dtp90fb.bkt.clouddn.com/AppStar.png">
+<meta property="og:updated_time" content="2018-03-30T02:58:52.527Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="APP启动广告图思路">
-<meta name="twitter:description" content="APP启动广告图思路 很多app(如淘宝、美团等)在启动图加载完毕后，还会显示几秒的广告，一般都有个跳过按钮可以跳过这个广告，有的app在点击广告页之后还会进入一个广告页面，点击返回进入首页。  思路 1.广告页加载思路广告页的内容要实时显示，在无网络状态或者网速缓慢的情况下不能延迟加载，或者等到首页出现了再加载广告页。所以这里我不采用网络请求广告接口获取图片地址，然后加载图片的方式，而是先将图片">
-<meta name="twitter:image" content="http://p6c2e2bne.bkt.clouddn.com/AppStart.png">
+<meta name="twitter:description" content="很多app(如淘宝、美团等)在启动图加载完毕后，还会显示几秒的广告，一般都有个跳过按钮可以跳过这个广告，有的app在点击广告页之后还会进入一个广告页面，点击返回进入首页。  思路 1.广告页加载思路广告页的内容要实时显示，在无网络状态或者网速缓慢的情况下不能延迟加载，或者等到首页出现了再加载广告页。所以这里我不采用网络请求广告接口获取图片地址，然后加载图片的方式，而是先将图片异步下载到本地，并保">
+<meta name="twitter:image" content="http://p6dtp90fb.bkt.clouddn.com/AppStar.png">
   
     <link rel="alternative" href="/atom.xml" title="Hyj的Blog" type="application/atom+xml">
   
@@ -176,10 +176,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="APP启动广告图思路"><a href="#APP启动广告图思路" class="headerlink" title="APP启动广告图思路"></a>APP启动广告图思路</h1><blockquote>
+        <blockquote>
 <p>很多app(如淘宝、美团等)在启动图加载完毕后，还会显示几秒的广告，一般都有个跳过按钮可以跳过这个广告，有的app在点击广告页之后还会进入一个广告页面，点击返回进入首页。</p>
 </blockquote>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p><img src="http://p6c2e2bne.bkt.clouddn.com/AppStart.png" alt="流程图"></p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p><img src="http://p6dtp90fb.bkt.clouddn.com/AppStar.png" alt="AppStar"></p>
 <h3 id="1-广告页加载思路"><a href="#1-广告页加载思路" class="headerlink" title="1.广告页加载思路"></a>1.广告页加载思路</h3><p>广告页的内容要实时显示，在无网络状态或者网速缓慢的情况下不能延迟加载，或者等到首页出现了再加载广告页。所以这里我不采用网络请求广告接口获取图片地址，然后加载图片的方式，而是先将图片异步下载到本地，并保存图片名，每次打开app时先根据本地存储的图片名查找沙盒中是否存在该图片，如果存在，则显示广告页。  </p>
 <figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">NSData</span> *modelData = [[<span class="built_in">NSUserDefaults</span> standardUserDefaults] objectForKey:kLaunchADKey];</span><br><span class="line">    LaunchAdModel *model = [LaunchAdModel modelWithJSON:modelData];</span><br><span class="line">    <span class="keyword">if</span> (model.isShow) &#123;<span class="comment">//是否展示广告</span></span><br><span class="line">        <span class="keyword">if</span> ([XHLaunchAd checkImageInCacheWithURL:[<span class="built_in">NSURL</span> URLWithString:model.content]]) &#123;<span class="comment">//检查本地是否存在对应图片广告</span></span><br><span class="line">            [LaunchAdManager showImageAdvertisingWithModel:model];<span class="comment">//展示图片广告</span></span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span> ([XHLaunchAd checkVideoInCacheWithURL:[<span class="built_in">NSURL</span> URLWithString:model.content]])&#123;<span class="comment">//检查本地是否存在对应视频广告</span></span><br><span class="line">            [LaunchAdManager showVideoAdvertisingWithModel:model];<span class="comment">//展示视频广告</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 <h3 id="2-判断广告页面是否更新"><a href="#2-判断广告页面是否更新" class="headerlink" title="2.判断广告页面是否更新"></a>2.判断广告页面是否更新</h3><p>无论本地是否存在广告图片，每次启动都需要重新调用广告接口。如上面流程图所示，请求API和检测本地广告数据是同时异步进行，互不干扰。根据图片名称或者图片id等方法判断广告是否更新，如果获取的图片名称或者图片id跟本地存储的不一致，则需要重新下载新图片，并删除旧图片。  </p>
@@ -220,11 +220,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">程序员的自我修养</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">程序员的自我修养</a>
         		</li>
       		
 		</ul>
@@ -422,11 +422,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">程序员的自我修养</a>
+                <a href="javascript:void(0)" class="js-tag color4">iOS</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">iOS</a>
+                <a href="javascript:void(0)" class="js-tag color4">程序员的自我修养</a>
               </li>
             
             <div class="clearfix"></div>
