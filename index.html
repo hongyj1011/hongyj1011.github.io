@@ -45,7 +45,7 @@
 			<img src="" class="js-avatar">
 		</a>
 		<hgroup>
-		  <h1 class="header-author"><a href="/">hyj个人日记</a></h1>
+		  <h1 class="header-author"><a href="/">hyj个人笔记</a></h1>
 		</hgroup>
 		
 
@@ -103,7 +103,7 @@
 				<img src="" class="js-avatar">
 			</div>
 			<hgroup>
-			  <h1 class="header-author js-header-author">hyj个人日记</h1>
+			  <h1 class="header-author js-header-author">hyj个人笔记</h1>
 			</hgroup>
 			
 			
@@ -150,6 +150,93 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-APP启动广告图思路" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/03/28/APP启动广告图思路/">APP启动广告图思路</a>
+    </h1>
+  
+
+        
+        <a href="/2018/03/28/APP启动广告图思路/" class="archive-article-date">
+  	<time datetime="2018-03-28T08:29:08.345Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="APP启动广告图思路"><a href="#APP启动广告图思路" class="headerlink" title="APP启动广告图思路"></a>APP启动广告图思路</h1><blockquote>
+<p>很多app(如淘宝、美团等)在启动图加载完毕后，还会显示几秒的广告，一般都有个跳过按钮可以跳过这个广告，有的app在点击广告页之后还会进入一个广告页面，点击返回进入首页。</p>
+</blockquote>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p><img src="http://p6c2e2bne.bkt.clouddn.com/AppStart.png" alt="流程图"></p>
+<h3 id="1-广告页加载思路"><a href="#1-广告页加载思路" class="headerlink" title="1.广告页加载思路"></a>1.广告页加载思路</h3><p>广告页的内容要实时显示，在无网络状态或者网速缓慢的情况下不能延迟加载，或者等到首页出现了再加载广告页。所以这里我不采用网络请求广告接口获取图片地址，然后加载图片的方式，而是先将图片异步下载到本地，并保存图片名，每次打开app时先根据本地存储的图片名查找沙盒中是否存在该图片，如果存在，则显示广告页。  </p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">NSData</span> *modelData = [[<span class="built_in">NSUserDefaults</span> standardUserDefaults] objectForKey:kLaunchADKey];</span><br><span class="line">    LaunchAdModel *model = [LaunchAdModel modelWithJSON:modelData];</span><br><span class="line">    <span class="keyword">if</span> (model.isShow) &#123;<span class="comment">//是否展示广告</span></span><br><span class="line">        <span class="keyword">if</span> ([XHLaunchAd checkImageInCacheWithURL:[<span class="built_in">NSURL</span> URLWithString:model.content]]) &#123;<span class="comment">//检查本地是否存在对应图片广告</span></span><br><span class="line">            [LaunchAdManager showImageAdvertisingWithModel:model];<span class="comment">//展示图片广告</span></span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span> ([XHLaunchAd checkVideoInCacheWithURL:[<span class="built_in">NSURL</span> URLWithString:model.content]])&#123;<span class="comment">//检查本地是否存在对应视频广告</span></span><br><span class="line">            [LaunchAdManager showVideoAdvertisingWithModel:model];<span class="comment">//展示视频广告</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2-判断广告页面是否更新"><a href="#2-判断广告页面是否更新" class="headerlink" title="2.判断广告页面是否更新"></a>2.判断广告页面是否更新</h3><p>无论本地是否存在广告图片，每次启动都需要重新调用广告接口。如上面流程图所示，请求API和检测本地广告数据是同时异步进行，互不干扰。根据图片名称或者图片id等方法判断广告是否更新，如果获取的图片名称或者图片id跟本地存储的不一致，则需要重新下载新图片，并删除旧图片。  </p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">LaunchAdModel *model = [LaunchAdModel modelWithDictionary:json[<span class="string">@"data"</span>]];<span class="comment">//模拟广告接口返回数据</span></span><br><span class="line">        <span class="built_in">NSURL</span> *url = [<span class="built_in">NSURL</span> URLWithString:model.content];</span><br><span class="line">        <span class="keyword">if</span> ([model.type isEqualToString:<span class="string">@"image"</span>]) &#123;</span><br><span class="line">            <span class="keyword">if</span> ([XHLaunchAd checkImageInCacheWithURL:url]) &#123;<span class="comment">//如果本地已经存在该广告就不做更新</span></span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//更新广告</span></span><br><span class="line">            [XHLaunchAd downLoadImageAndCacheWithURLArray:@[url] completed:^(<span class="built_in">NSArray</span> * _Nonnull completedArray) &#123;</span><br><span class="line">                [[<span class="built_in">NSUserDefaults</span> standardUserDefaults] setObject:[model modelToJSONData] forKey:kLaunchADKey];</span><br><span class="line">                [[<span class="built_in">NSUserDefaults</span> standardUserDefaults] synchronize];</span><br><span class="line">                [XHLaunchAd clearDiskCacheExceptImageUrlArray:@[[<span class="built_in">NSURL</span> URLWithString:model.content]]];</span><br><span class="line">                <span class="built_in">NSLog</span>(<span class="string">@"批量下载缓存图片结果 = %@"</span> ,completedArray);</span><br><span class="line">            &#125;];</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="3-广告页点击"><a href="#3-广告页点击" class="headerlink" title="3.广告页点击"></a>3.广告页点击</h3><p>如果点击广告需要跳转广告详情页面，那么广告链接地址也需要用NSUserDefaults存储。注意：广告详情页面是从首页push进去的。我们可以将接口返回的数据直接保存在NSUserDefaults中。</p>
+<h3 id="4-广告显示机制"><a href="#4-广告显示机制" class="headerlink" title="4.广告显示机制"></a>4.广告显示机制</h3><p>研究了一下淘宝的广告显示机制，删除淘宝之后重新打开不会显示广告图片，第二次打开才会显示。美团的广告图有时候显示有时候不显示，所以后台在开发广告api的时候可以增加一个字段来判断是否启用广告，如果后台关闭了广告，不显示广告即可。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">程序员的自我修养</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/03/28/APP启动广告图思路/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -287,6 +374,21 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">程序员的自我修养</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -331,7 +433,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2018 hyj个人日记
+    		&copy; 2018 hyj个人笔记
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
@@ -412,6 +514,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">程序员的自我修养</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">iOS</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>
