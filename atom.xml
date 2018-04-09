@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Hyj的Blog</title>
+  
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2018-03-30T02:58:52.527Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>hyj个人笔记</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>APP启动广告图思路</title>
+    <link href="http://yoursite.com/2018/03/28/APP%E5%90%AF%E5%8A%A8%E5%B9%BF%E5%91%8A%E5%9B%BE%E6%80%9D%E8%B7%AF/"/>
+    <id>http://yoursite.com/2018/03/28/APP启动广告图思路/</id>
+    <published>2018-03-28T08:29:08.345Z</published>
+    <updated>2018-03-30T02:58:52.527Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;blockquote&gt;
+&lt;p&gt;很多app(如淘宝、美团等)在启动图加载完毕后，还会显示几秒的广告，一般都有个跳过按钮可以跳过这个广告，有的app在点击广告页之后还会进入一个广告页面，点击返回进入首页。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;思路&quot;&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+    
+      <category term="iOS" scheme="http://yoursite.com/tags/iOS/"/>
+    
+      <category term="程序员的自我修养" scheme="http://yoursite.com/tags/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="http://yoursite.com/2018/03/26/hello-world/"/>
+    <id>http://yoursite.com/2018/03/26/hello-world/</id>
+    <published>2018-03-26T07:18:16.350Z</published>
+    <updated>2018-03-26T07:18:16.351Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a
+        
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Git学习笔记</title>
+    <link href="http://yoursite.com/2018/01/08/Git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    <id>http://yoursite.com/2018/01/08/Git学习笔记/</id>
+    <published>2018-01-08T02:47:02.950Z</published>
+    <updated>2018-03-30T02:14:25.399Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;详细教程请参考廖雪峰的Git教程&quot;&gt;&lt;a href=&quot;#详细教程请参考廖雪峰的Git教程&quot; class=&quot;headerlink&quot; title=&quot;详细教程请参考廖雪峰的Git教程&quot;&gt;&lt;/a&gt;详细教程请参考&lt;a
+        
+      
+    
+    </summary>
+    
+    
+      <category term="iOS" scheme="http://yoursite.com/tags/iOS/"/>
+    
+      <category term="程序员的自我修养" scheme="http://yoursite.com/tags/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB/"/>
+    
+  </entry>
+  
+</feed>
